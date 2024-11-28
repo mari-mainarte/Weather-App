@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WeatherApp.Views.WeatherAppView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="WeatherAppView"
+    BackgroundColor="#F5F5F5">
+    <ScrollView>
+        <VerticalStackLayout Margin="0,60,0,0" HorizontalOptions="Center">
+            <Image
+                Margin="0,100,0,0"
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Source="openweather_logo.png"
+                WidthRequest="400" />
+            <Label
+                Margin="0,40,0,0"
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text="Como deseja pesquisar o clima da sua cidade"
+                TextColor="#464648" />
+
+            <HorizontalStackLayout
+                Margin="0,40,0,0"
+                HorizontalOptions="Center"
+                Spacing="20">
+                <HorizontalStackLayout>
+                    <Entry
+                        x:Name="cidadeEntry"
+                        BackgroundColor="White"
+                        Placeholder="Digite o nome da sua cidade"
+                        WidthRequest="250" />
+                    <Border
+                        Background="#EB6E4B"
+                        HeightRequest="50"
+                        Stroke="Transparent"
+                        WidthRequest="50">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5,5,5,5" />
+                        </Border.StrokeShape>
+                        <ImageButton
+                            x:Name="searchButton"
+                            BackgroundColor="#EB6B4B"
+                            Command="{Binding getCidadeCommand}"
+                            HeightRequest="35"
+                            Source="icone_lupa.png" />
+                    </Border>
+                </HorizontalStackLayout>
+                <Button
+                    x:Name="gpsButton"
+                    BackgroundColor="#EB6E4B"
+                    FontAttributes="Bold"
+                    Text="GPS"
+                    TextColor="White"
+                    WidthRequest="80" />
+            </HorizontalStackLayout>
+
+            <CollectionView ItemsSource="{Binding Cidade}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout
+                            x:Name="cidadeInfo"
+                            Margin="200,120,0,0"
+                            Spacing="30">
+                            <HorizontalStackLayout>
+                                <Image
+                                    HeightRequest="25"
+                                    Source="map_marker.png"
+                                    WidthRequest="25" />
+                                <Label
+                                    x:Name="nomeCidade"
+                                    Margin="15,0,0,0"
+                                    FontSize="25"
+                                    Text="{Binding Nome}" />
+                            </HorizontalStackLayout>
+
+                            <Label
+                                x:Name="tempCidade"
+                                Margin="20,0,0,0"
+                                FontSize="40"
+                                Text="{Binding Temperatura}" />
+
+                            <Label
+                                x:Name="condicaoCidade"
+                                Margin="30,0,0,0"
+                                FontSize="17"
+                                Text="{Binding Condicao}" />
+
+                            <HorizontalStackLayout Margin="9,0,0,0" Spacing="40">
+                                <Label x:Name="umidadeCidade" Text="{Binding Umidade}" />
+                                <Label x:Name="ventoCidade" Text="{Binding Vento}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
