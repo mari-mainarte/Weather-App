@@ -66,29 +66,29 @@
                                 <Image
                                     HeightRequest="25"
                                     Source="map_marker.png"
-                                    WidthRequest="25" />
+                                    WidthRequest="25" />    
                                 <Label
                                     x:Name="nomeCidade"
                                     Margin="15,0,0,0"
                                     FontSize="25"
-                                    Text="{Binding Nome}" />
+                                    Text="{Binding Name}" />
                             </HorizontalStackLayout>
 
                             <Label
                                 x:Name="tempCidade"
                                 Margin="20,0,0,0"
                                 FontSize="40"
-                                Text="{Binding Temperatura}" />
+                                Text="{Binding Temp}" />
 
                             <Label
                                 x:Name="condicaoCidade"
                                 Margin="30,0,0,0"
                                 FontSize="17"
-                                Text="{Binding Condicao}" />
+                                Text="{Binding Main}" />
 
                             <HorizontalStackLayout Margin="9,0,0,0" Spacing="40">
-                                <Label x:Name="umidadeCidade" Text="{Binding Umidade}" />
-                                <Label x:Name="ventoCidade" Text="{Binding Vento}" />
+                                <Label x:Name="umidadeCidade" Text="{Binding Humidity}" />
+                                <Label x:Name="ventoCidade" Text="{Binding Speed}" />
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </DataTemplate>

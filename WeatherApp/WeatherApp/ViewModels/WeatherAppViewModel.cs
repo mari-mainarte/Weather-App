@@ -32,8 +32,7 @@ namespace WeatherApp.ViewModels
 
         public async void getCidade()
         {
-            WeatherAppService weatherAppService = new WeatherAppService();
-            cidade = await weatherAppService.GetCidadeAsync();
+            cidade = await weatherAppService.GetCidadeAsync("São paulo");
         }
     }
 }

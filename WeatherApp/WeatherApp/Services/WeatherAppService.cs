@@ -18,7 +18,7 @@ namespace WeatherApp.Services
         private HttpClient httpClient;
         private Cidade cidade;
         private JsonSerializerOptions jsonSerializerOptions;
-        private Uri uri = new Uri("https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=21a98e40b60436fb3cc8fe3abc8f3f4b");
+        private string apiKey = "21a98e40b60436fb3cc8fe3abc8f3f4b";
 
         public WeatherAppService()
         {
@@ -30,8 +30,9 @@ namespace WeatherApp.Services
             };
         }
 
-        public async Task<Cidade> GetCidadeAsync()
+        public async Task<Cidade> GetCidadeAsync(string cityName)
         {
+            Uri uri = new Uri($"https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={apiKey}");
             try
             {
                 HttpResponseMessage response = await httpClient.GetAsync(uri);

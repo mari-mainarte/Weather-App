@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Models\Coordenada.cs" />
 	  <Compile Remove="ViewModels\Class1.cs" />
 	</ItemGroup>
 
