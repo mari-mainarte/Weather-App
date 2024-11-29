@@ -66,7 +66,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\icone_agua.png" />
 	  <None Remove="Resources\Images\icone_lupa.png" />
+	  <None Remove="Resources\Images\icone_vento.png" />
 	  <None Remove="Resources\Images\map-marker.png" />
 	  <None Remove="Resources\Images\map_marker.png" />
 	  <None Remove="Resources\Images\OpenWeather_logo.png" />

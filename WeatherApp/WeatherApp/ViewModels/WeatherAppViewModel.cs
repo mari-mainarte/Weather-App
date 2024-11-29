@@ -19,6 +19,27 @@ namespace WeatherApp.ViewModels
         Cidade cidade;
 
         [ObservableProperty]
+        string cityName;
+
+        [ObservableProperty]
+        private string name;
+
+        [ObservableProperty]
+        private string temp;
+
+        [ObservableProperty]
+        private string description;
+
+        [ObservableProperty]
+        private string humidity;
+
+        [ObservableProperty]
+        private string speed;
+
+        [ObservableProperty]
+        private string flagIcon;
+
+        [ObservableProperty]
         private bool isVisible = false;
 
         WeatherAppService weatherAppService;
@@ -32,7 +53,17 @@ namespace WeatherApp.ViewModels
 
         public async void getCidade()
         {
-            cidade = await weatherAppService.GetCidadeAsync("São paulo");
+            Cidade = await weatherAppService.GetCidadeAsync(cityName);
+            string country = Cidade.Sys.Country;
+            Name = Cidade.Name + ", " + country;
+            Temp = Math.Round(Cidade.Main.Temp).ToString() + "ºC";
+            Description = Cidade.Weather[0].Description;
+            Humidity = Cidade.Main.Humidity.ToString() + "%";
+            Speed = Cidade.Wind.Speed.ToString() + "km/h";
+            FlagIcon = $"https://flagsapi.com/{country}/flat/64.png";
+            IsVisible = true;
         }
+
+        
     }
 }

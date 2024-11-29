@@ -6,15 +6,15 @@
     Title="WeatherAppView"
     BackgroundColor="#F5F5F5">
     <ScrollView>
-        <VerticalStackLayout Margin="0,60,0,0" HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="Center">
             <Image
                 Margin="0,100,0,0"
                 HeightRequest="150"
                 HorizontalOptions="Center"
                 Source="openweather_logo.png"
-                WidthRequest="400" />
+                WidthRequest="300" />
             <Label
-                Margin="0,40,0,0"
+                Margin="0,20,0,0"
                 FontSize="30"
                 HorizontalOptions="Center"
                 Text="Como deseja pesquisar o clima da sua cidade"
@@ -26,25 +26,15 @@
                 Spacing="20">
                 <HorizontalStackLayout>
                     <Entry
-                        x:Name="cidadeEntry"
                         BackgroundColor="White"
                         Placeholder="Digite o nome da sua cidade"
+                        Text="{Binding CityName}"
                         WidthRequest="250" />
-                    <Border
-                        Background="#EB6E4B"
-                        HeightRequest="50"
-                        Stroke="Transparent"
-                        WidthRequest="50">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="5,5,5,5" />
-                        </Border.StrokeShape>
-                        <ImageButton
-                            x:Name="searchButton"
-                            BackgroundColor="#EB6B4B"
-                            Command="{Binding getCidadeCommand}"
-                            HeightRequest="35"
-                            Source="icone_lupa.png" />
-                    </Border>
+                    <ImageButton
+                        BackgroundColor="#EB6B4B"
+                        Command="{Binding getCidadeCommand}"
+                        HeightRequest="35"
+                        Source="icone_lupa.png" />
                 </HorizontalStackLayout>
                 <Button
                     x:Name="gpsButton"
@@ -55,45 +45,46 @@
                     WidthRequest="80" />
             </HorizontalStackLayout>
 
-            <CollectionView ItemsSource="{Binding Cidade}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout
-                            x:Name="cidadeInfo"
-                            Margin="200,120,0,0"
-                            Spacing="30">
-                            <HorizontalStackLayout>
-                                <Image
-                                    HeightRequest="25"
-                                    Source="map_marker.png"
-                                    WidthRequest="25" />    
-                                <Label
-                                    x:Name="nomeCidade"
-                                    Margin="15,0,0,0"
-                                    FontSize="25"
-                                    Text="{Binding Name}" />
-                            </HorizontalStackLayout>
+            <VerticalStackLayout
+                Margin="190,60,0,0"
+                IsVisible="{Binding IsVisible}"
+                Spacing="30">
+                <HorizontalStackLayout>
+                    <Image
+                        HeightRequest="25"
+                        Source="map_marker.png"
+                        WidthRequest="25" />
+                    <Label
+                        Margin="15,0,0,0"
+                        FontSize="30"
+                        Text="{Binding Name}" />
 
-                            <Label
-                                x:Name="tempCidade"
-                                Margin="20,0,0,0"
-                                FontSize="40"
-                                Text="{Binding Temp}" />
+                    <Image
+                        Margin="10,0,0,0"
+                        HeightRequest="30"
+                        Source="{Binding FlagIcon}" />
+                </HorizontalStackLayout>
 
-                            <Label
-                                x:Name="condicaoCidade"
-                                Margin="30,0,0,0"
-                                FontSize="17"
-                                Text="{Binding Main}" />
+                <Label
+                    Margin="60,0,0,0"
+                    FontSize="40"
+                    Text="{Binding Temp}" />
+                <Label
+                    Margin="80,0,0,0"
+                    FontSize="17"
+                    Text="{Binding Description}" />
 
-                            <HorizontalStackLayout Margin="9,0,0,0" Spacing="40">
-                                <Label x:Name="umidadeCidade" Text="{Binding Humidity}" />
-                                <Label x:Name="ventoCidade" Text="{Binding Speed}" />
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                <HorizontalStackLayout Margin="27,0,0,0" Spacing="40">
+                    <HorizontalStackLayout Spacing="5">
+                        <Image HeightRequest="25" Source="icone_agua.png" />
+                        <Label Text="{Binding Humidity}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="8">
+                        <Image HeightRequest="30" Source="icone_vento.png" />
+                        <Label Text="{Binding Speed}" />
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
